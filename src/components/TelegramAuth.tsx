@@ -47,32 +47,28 @@ export default function TelegramAuth() {
   }
 
   return (
-    <div className=""></div>
-    <div>
-
+    <div className="flex flex-col items-center space-y-4 p-8">
+      {isAuthenticated ? (
+        <>
+          <p>Authenticated!</p>
+          <button
+            onClick={() => router.push('/protected')}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Access Protected Page
+          </button>
+        </>
+      ) : (
+        <div>
+          <p>You need to be an owner of this account</p>
+          <button
+            onClick={authenticateUser}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Authenticate
+          </button>
+        </div>
+      )}
     </div>
-    // <div className="flex flex-col items-center space-y-4 p-8">
-    //   {isAuthenticated ? (
-    //     <>
-    //       <p>Authenticated!</p>
-    //       <button
-    //         onClick={() => router.push('/protected')}
-    //         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-    //       >
-    //         Access Protected Page
-    //       </button>
-    //     </>
-    //   ) : (
-    //     <div>
-    //       <p>You need to be an owner of this account</p>
-    //       <button
-    //         onClick={authenticateUser}
-    //         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-    //       >
-    //         Authenticate
-    //       </button>
-    //     </div>
-    //   )}
-    // </div>
   )
 }
