@@ -22,8 +22,10 @@ export async function decrypt(input: string): Promise<any> {
 }
 
 export async function getSession() {
+  const coc = cookies().get('session')
+  console.log(1, 'coc', coc)
   const session = cookies().get('session')?.value
-  console.log(2, 'Session value in getSession ', session)
+  console.log(2, 'Значение сеанса в getSession', session)
   if (!session) return null
   return await decrypt(session)
 }
@@ -44,23 +46,3 @@ export async function updateSession(request: NextRequest) {
   })
   return res
 }
-
-// src/pages/api/session.ts
-// import { jwtVerify, SignJWT } from 'jose';
-// import { NextApiRequest, NextApiResponse } from 'next';
-
-// const key = new TextEncoder().encode(process.env.JWT_SECRET);
-
-// export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-//   if (req.method === 'POST') {
-//     const { token } = req.body;
-//     try {
-//       const { payload } = await jwtVerify(token, key);
-//       res.status(200).json({ payload });
-//     } catch (error) {
-//       res.status(401).json({ error: 'Invalid token' });
-//     }
-//   } else {
-//     res.status(405).end(); // Method Not Allowed
-//   }
-// }

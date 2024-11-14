@@ -7,14 +7,22 @@ export default function TelegramAuth() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const router = useRouter()
 
-  useEffect(() => {
-    checkAuth()
-  }, [])
+  // useEffect(() => {
+  //   checkAuth()
+  // }, [])
 
   const checkAuth = async () => {
     const response = await fetch('/api/session')
     if (response.ok) {
       setIsAuthenticated(true)
+    }
+  }
+  const handleCheckAuth = async () => {
+    const response = await fetch('/api/session')
+    if (response.ok) {
+      console.log(45, ' Есть сессия')
+    } else {
+      console.log(45, ' нет сессии')
     }
   }
 
@@ -36,7 +44,7 @@ export default function TelegramAuth() {
 
         if (response.ok) {
           setIsAuthenticated(true)
-          router.refresh()
+          // router.refresh()
         } else {
           console.error('Authentication failed')
           setIsAuthenticated(false)
@@ -63,12 +71,20 @@ export default function TelegramAuth() {
       ) : (
         <div>
           <p>Вы должны быть владельцем этого аккаунта</p>
-          <button
-            onClick={authenticateUser}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Authenticate
-          </button>
+          <div className="flex ">
+            <button
+              onClick={authenticateUser}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Authenticate
+            </button>
+            <button
+              onClick={handleCheckAuth}
+              className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded"
+            >
+              Check session
+            </button>
+          </div>
         </div>
       )}
     </div>
