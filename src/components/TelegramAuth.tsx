@@ -23,7 +23,7 @@ export default function TelegramAuth() {
     WebApp.ready()
     const initData = WebApp.initData
 
-    console.log(77, initData)
+    console.log('шаг 1: кнопка Authenticate ', initData)
     if (initData) {
       try {
         const response = await fetch('/api/auth', {
@@ -57,12 +57,12 @@ export default function TelegramAuth() {
             onClick={() => router.push('/protected')}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
-            Access Protected Page
+            Доступ к защищенной странице
           </button>
         </>
       ) : (
         <div>
-          <p>You need to be an owner of this account</p>
+          <p>Вы должны быть владельцем этого аккаунта</p>
           <button
             onClick={authenticateUser}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
