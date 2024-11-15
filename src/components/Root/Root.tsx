@@ -7,6 +7,15 @@ import { ErrorBoundary } from '@/components/ErrorBoundary'
 import './styles.css'
 import { AppRoot } from '@telegram-apps/telegram-ui'
 import { setLocale } from '@/core/i18n/locale'
+import {
+  initData,
+  miniApp,
+  useLaunchParams,
+  useSignal
+} from '@telegram-apps/sdk-react'
+import { init } from '@/core/init'
+import { useClientOnce } from '@/hook/useClientOnce'
+import { useTelegramMock } from '@/hook/useTelegramMock'
 
 function RootInner({ children }: PropsWithChildren) {
   const isDev = process.env.NODE_ENV === 'development'

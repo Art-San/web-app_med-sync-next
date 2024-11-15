@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
-import './globals.css'
+import './_assets/globals.css'
 import Head from 'next/head'
 import { TelegramProvider } from './ui/useTg'
+import { Root } from '@/components/Root/Root'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -30,8 +31,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* {children} */}
-        <TelegramProvider>{children}</TelegramProvider>
+        <Root>{children}</Root>
+        {/* <TelegramProvider>{children}</TelegramProvider> */}
       </body>
     </html>
   )
