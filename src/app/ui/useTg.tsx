@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import type { ITelegramUser, IWebApp } from './types'
+import { init } from '@telegram-apps/sdk-react'
 
 export interface ITelegramContext {
   webApp?: IWebApp
@@ -19,15 +20,14 @@ export const TelegramProvider = ({
 
   useEffect(() => {
     const initializeApp = async () => {
-      const app = (await import('@twa-dev/sdk')).default
+      init()
+      // const app = (await import('@twa-dev/sdk')).default
 
-      console.log(12, app.initData)
-
-      if (app) {
-        app.ready()
-        app.expand()
-        setWebApp(app as any)
-      }
+      // if (app) {
+      //   app.ready()
+      //   app.expand()
+      //   setWebApp(app as any)
+      // }
     }
 
     initializeApp()
