@@ -39,29 +39,27 @@ export default function TelegramAuth() {
 
     let initData = WebApp.initData
 
-    console.log(34, initData)
     if (!initData) {
       initData = dataTelegram as string
     }
-    console.log(35, initData)
 
-    console.log('шаг 1: кнопка Authenticate ', initData)
     if (initData) {
       try {
-        // const response = await fetch('/api/auth', {
-        //   method: 'POST',
-        //   headers: {
-        //     'Content-Type': 'application/json'
-        //   },
-        //   body: JSON.stringify({ initData })
-        // })
-        // if (response.ok) {
-        //   setIsAuthenticated(true)
-        //   // router.refresh()
-        // } else {
-        //   console.error('Authentication failed')
-        //   setIsAuthenticated(false)
-        // }
+        const response = await fetch('/api/auth', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ initData })
+        })
+        console.log(55, response)
+        if (response.ok) {
+          setIsAuthenticated(true)
+          // router.refresh()
+        } else {
+          console.error('Authentication failed')
+          setIsAuthenticated(false)
+        }
       } catch (error) {
         console.error('Error during authentication:', error)
         setIsAuthenticated(false)

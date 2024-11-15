@@ -4,6 +4,7 @@ import { encrypt, SESSION_DURATION } from '@/utils/session'
 
 export async function POST(request: Request) {
   const { initData } = await request.json()
+  console.log('шаг 1-2: результат валидации ', initData)
 
   const validationResult = validateTelegramWebAppData(initData)
 

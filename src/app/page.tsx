@@ -20,7 +20,7 @@ export default async function Home() {
       <h1 className="text-4xl font-bold mb-8">
         Jwt Authentication for Telegram Mini Apps
       </h1>
-      {/* <pre>{JSON.stringify(session, null, 2)}</pre> */}
+      <pre>{JSON.stringify(session, null, 2)}</pre>
       <TelegramAuth />
     </div>
   )
