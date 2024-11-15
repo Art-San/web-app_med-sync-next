@@ -1,6 +1,7 @@
 import { jwtVerify, SignJWT } from 'jose'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
+import { getSes } from './cookies/coockiesSession'
 
 const key = new TextEncoder().encode(process.env.JWT_SECRET)
 
@@ -22,9 +23,8 @@ export async function decrypt(input: string): Promise<any> {
 }
 
 export async function getSession() {
-  const coc = cookies().get('session')
-  console.log(1, 'coc', coc)
-  const session = cookies().get('session')?.value
+  // const session = await getSes()
+  const session = cookies().get('SESSION')?.value
   console.log(2, 'Значение сеанса в getSession', session)
   if (!session) return null
   return await decrypt(session)

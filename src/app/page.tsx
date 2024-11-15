@@ -1,9 +1,11 @@
 import TelegramAuth from '@/components/TelegramAuth'
+import { getSes } from '@/utils/cookies/coockiesSession'
 import { getSession } from '@/utils/session'
 import Link from 'next/link'
 
 export default async function Home() {
-  const session = await getSession()
+  const session = await getSes()
+  // const session = await getSession()
   console.log(1, 'session Home,', session)
 
   return (
